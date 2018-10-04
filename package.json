@@ -1,0 +1,84 @@
+{
+  "name": "react-context-global-state",
+  "description": "Simple global state for React by Context API",
+  "version": "0.1.0",
+  "author": "Daishi Kato",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dai-shi/react-context-global-state.git"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "compile": "babel src -d dist",
+    "test": "npm run eslint && npm run jest",
+    "eslint": "eslint src example __tests__",
+    "jest": "jest",
+    "example": "webpack-dev-server --port ${PORT:-8080} --entry ./example/main.js --output-filename bundle.js --content-base example --module-bind 'js=babel-loader' --mode development"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "context",
+    "stateless",
+    "thisless",
+    "pure"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.0"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb"
+    ],
+    "rules": {
+      "import/prefer-default-export": 0,
+      "react/jsx-filename-extension": [
+        2,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "import/no-extraneous-dependencies": [
+        2,
+        {
+          "devDependencies": true
+        }
+      ],
+      "react/prop-types": 0
+    }
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
+}
