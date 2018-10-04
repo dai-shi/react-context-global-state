@@ -9,7 +9,7 @@ Simple global state for React by Context API
 Background
 ----------
 
-React v16.3 introduced a new Context API.
+React v16.3 introduces a new Context API.
 Context API allows to pass values down to a component tree
 without explicit props.
 
@@ -79,8 +79,8 @@ createGlobalState(initialState)
 ### Return value
 An object of `{ StateProvider, StateConsumer }`
 
-`StateProvider`: a component to provder all the state
+`StateProvider`: a component to provide entire state
 
-`StateConsumer`: a component that receives a required `name` prop and invoke a child function prop whose signature is `(value, update) => {}` where `value` is the state value specified by the `name` and `update` is a function to update the value
+`StateConsumer`: a component that receives a required `name` prop and invokes a child function prop whose signature is `(value, update) => {}` where `value` is the state value specified by the `name` and `update` is a function to update the value
 
-The `update` function above is similar to `Component.prototype.setState`, and accepts updating function or a new value itself.
+The `update` function above is similar to `Component.prototype.setState`, and accepts either an updating function or a new value itself.
