@@ -4,15 +4,12 @@ const isFunction = fn => (typeof fn === 'function');
 
 export const createGlobalState = (initialState) => {
   const consumers = {};
-  const providers = {};
   const updaters = {};
   let StateProvider = ({ children }) => <React.Fragment>{children}</React.Fragment>;
   Object.keys(initialState).forEach((name) => {
-    const context = React.createContext(initialState[name]);
-    consumers[name] = context.Consumer;
-    providers[name] = context.Provider;
+    const { Provider, Consumer } = React.createContext(initialState[name]);
+    consumers[name] = Consumer;
     const InnerProvider = StateProvider;
-    const Provider = providers[name];
     StateProvider = class extends React.Component {
       constructor() {
         super();
