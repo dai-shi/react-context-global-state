@@ -24,36 +24,23 @@ var isFunction = function isFunction(fn) {
 };
 
 var createGlobalState = exports.createGlobalState = function createGlobalState(initialState) {
-  var updaters = {};
   var consumers = {};
-  var providers = {};
-  Object.keys(initialState).forEach(function (name) {
-    var context = _react2.default.createContext(initialState[name]);
-    consumers[name] = context.Consumer;
-    providers[name] = context.Provider;
-  });
-  var StateConsumer = function StateConsumer(_ref) {
-    var name = _ref.name,
-        children = _ref.children;
-
-    var Consumer = consumers[name];
+  var updaters = {};
+  var StateProvider = function StateProvider(_ref) {
+    var children = _ref.children;
     return _react2.default.createElement(
-      Consumer,
+      _react2.default.Fragment,
       null,
-      function (_ref2) {
-        var value = _ref2.value,
-            update = _ref2.update;
-        return children(value, update);
-      }
+      children
     );
   };
-  var StateProvider = function StateProvider(_ref3) {
-    var children = _ref3.children;
-    return children;
-  };
   Object.keys(initialState).forEach(function (name) {
+    var _React$createContext = _react2.default.createContext(initialState[name]),
+        Provider = _React$createContext.Provider,
+        Consumer = _React$createContext.Consumer;
+
+    consumers[name] = Consumer;
     var InnerProvider = StateProvider;
-    var Provider = providers[name];
     StateProvider = function (_React$Component) {
       _inherits(StateProvider, _React$Component);
 
@@ -78,13 +65,15 @@ var createGlobalState = exports.createGlobalState = function createGlobalState(i
       _createClass(StateProvider, [{
         key: 'render',
         value: function render() {
+          var children = this.props.children;
+
           return _react2.default.createElement(
             Provider,
             { value: this.state },
             _react2.default.createElement(
               InnerProvider,
               null,
-              this.children
+              children
             )
           );
         }
@@ -93,6 +82,21 @@ var createGlobalState = exports.createGlobalState = function createGlobalState(i
       return StateProvider;
     }(_react2.default.Component);
   });
+  var StateConsumer = function StateConsumer(_ref2) {
+    var name = _ref2.name,
+        children = _ref2.children;
+
+    var Consumer = consumers[name];
+    return _react2.default.createElement(
+      Consumer,
+      null,
+      function (_ref3) {
+        var value = _ref3.value,
+            update = _ref3.update;
+        return children(value, update);
+      }
+    );
+  };
   var getUpdater = function getUpdater(name) {
     return updaters[name];
   };
