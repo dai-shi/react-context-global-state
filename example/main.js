@@ -42,14 +42,12 @@ const TextBox = () => (
 
 const App = () => (
   <StateProvider>
-    <div>
-      <h1>Counter</h1>
-      <Counter />
-      <Counter />
-      <h1>TextBox</h1>
-      <TextBox />
-      <TextBox />
-    </div>
+    <h1>Counter</h1>
+    <Counter />
+    <Counter />
+    <h1>TextBox</h1>
+    <TextBox />
+    <TextBox />
   </StateProvider>
 );
 
