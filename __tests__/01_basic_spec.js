@@ -19,7 +19,7 @@ describe('basic spec', () => {
       counter1: 0,
     };
     const { StateProvider, StateConsumer } = createGlobalState(initialState);
-    const TextBox = () => (
+    const Counter = () => (
       <StateConsumer name="counter1">
         {(value, update) => (
           <div>
@@ -31,14 +31,17 @@ describe('basic spec', () => {
     );
     const App = () => (
       <StateProvider>
-        <div>
-          <TextBox />
+        <div className="first">
+          <Counter />
+        </div>
+        <div className="second">
+          <Counter />
         </div>
       </StateProvider>
     );
     const wrapper = mount(<App />);
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.find('button').simulate('click');
+    wrapper.find('.first button').simulate('click');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
