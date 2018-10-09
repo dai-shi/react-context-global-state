@@ -84,3 +84,8 @@ An object of `{ StateProvider, StateConsumer }`
 `StateConsumer`: a component that receives a required `name` prop and invokes a child function prop whose signature is `(value, update) => {}` where `value` is the state value specified by the `name` and `update` is a function to update the value
 
 The `update` function above is similar to `Component.prototype.setState`, and accepts either an updating function or a new value itself.
+
+Blogs
+-----
+
+- [React global state by Context API](https://medium.com/@dai_shi/react-global-state-by-context-api-5b3efa8acc6b)
