@@ -7,7 +7,10 @@ export const createGlobalState = (initialState) => {
   const updaters = {};
   let StateProvider = ({ children }) => <React.Fragment>{children}</React.Fragment>;
   Object.keys(initialState).forEach((name) => {
-    const { Provider, Consumer } = React.createContext(initialState[name]);
+    const { Provider, Consumer } = React.createContext({
+      value: initialState[name],
+      update: () => { throw new Error('cannot update initial value'); },
+    });
     consumers[name] = Consumer;
     const InnerProvider = StateProvider;
     StateProvider = class extends React.Component {
