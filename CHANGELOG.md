@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.3.0] - 2018-10-10
 ### Changed
 - Proper initial values
 
