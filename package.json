@@ -8,6 +8,7 @@
     "url": "https://github.com/dai-shi/react-context-global-state.git"
   },
   "main": "./dist/index.js",
+  "module": "./src/index.js",
   "scripts": {
     "compile": "babel src -d dist",
     "test": "npm run eslint && npm run jest",
