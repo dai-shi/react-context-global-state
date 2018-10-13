@@ -13,7 +13,7 @@ export const createGlobalState = (initialState) => {
     });
     consumers[name] = Consumer;
     const InnerProvider = StateProvider;
-    StateProvider = class extends React.Component {
+    StateProvider = class extends React.PureComponent {
       constructor() {
         super();
         updaters[name] = (func) => {
