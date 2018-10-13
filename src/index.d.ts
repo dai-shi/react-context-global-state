@@ -20,5 +20,5 @@ export const createGlobalState: <S extends {}>(initialState: S) => {
   StateProvider: React.ComponentType<StateProviderProps>,
   StateConsumer: React.ComponentType<StateConsumerProps>,
   stateItemConsumers: { [K in keyof S]: React.ComponentType<StateItemConsumerProps<S[K]>> },
-  stateItemUpdaters: { [K in keyof S]: (StateItemUpdater<S[K]> | undefined) },
+  stateItemUpdaters: { [K in keyof S]: StateItemUpdater<S[K]> | undefined },
 };
