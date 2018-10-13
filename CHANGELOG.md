@@ -3,6 +3,8 @@
 ## [Unreleased]
 ### Changed
 - BREAKING: use PureComponent
+### Added
+- TypeScript support
 
 ## [0.3.0] - 2018-10-10
 ### Changed

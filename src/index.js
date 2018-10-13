@@ -22,7 +22,7 @@ export const createGlobalState = (initialState) => {
         super();
         stateItemUpdaters[name] = (func) => {
           if (isFunction(func)) {
-            this.setState(state => Object.assign(state, { value: func(state.value) }));
+            this.setState(state => Object.assign({}, state, { value: func(state.value) }));
           } else {
             this.setState({ value: func });
           }
