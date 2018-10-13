@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "no-any": true,
+    "import-name": [true, {
+      "react": "React"
+    }],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+  }
+}
