@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-import { StateConsumer } from './main';
+import { stateItemConsumers } from './state';
+
+const Counter1Consumer = stateItemConsumers.counter1;
 
 const Counter = () => (
-  <StateConsumer name="counter1">
+  <Counter1Consumer>
     {(value: number, update: (v: number) => void) => (
       <div>
         <span>
@@ -14,7 +16,7 @@ const Counter = () => (
         <button type="button" onClick={() => update(value - 1)}>-1</button>
       </div>
     )}
-  </StateConsumer>
+  </Counter1Consumer>
 );
 
 export default Counter;

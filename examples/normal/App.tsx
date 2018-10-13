@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StateProvider } from './main';
+import { StateProvider } from './state';
 
 import Counter from './Counter';
 import TextBox from './TextBox';

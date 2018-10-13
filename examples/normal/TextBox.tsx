@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-import { StateConsumer } from './main';
+import { stateItemConsumers } from './state';
+
+const Text1Consumer = stateItemConsumers.text1;
 
 const TextBox = () => (
-  <StateConsumer name="text1">
+  <Text1Consumer>
     {(value: string, update: (v: string) => void) => (
       <div>
         <span>
@@ -13,7 +15,7 @@ const TextBox = () => (
         <input value={value} onChange={event => update(event.target.value)} />
       </div>
     )}
-  </StateConsumer>
+  </Text1Consumer>
 );
 
 export default TextBox;
