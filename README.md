@@ -56,11 +56,11 @@ const App = () => (
 Example
 -------
 
-The [example](example) folder contains a working example.
+The [examples](examples) folder contains a working example.
 You can run it with
 
 ```bash
-PORT=8080 npm run example
+PORT=8080 npm run examples:minimal
 ```
 
 and open <http://localhost:8080> in your web browser.
