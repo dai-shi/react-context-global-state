@@ -17,7 +17,7 @@
     "tslint": "tslint --project .",
     "tsc-test": "tsc --project . --noEmit",
     "examples:minimal": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/minimal/main.js --output-filename bundle.js --content-base examples/minimal --module-bind 'js=babel-loader' --mode development",
-    "examples:normal": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/normal/main.ts --output-filename bundle.js --content-base examples/normal --module-bind 'js=babel-loader' --module-bind 'ts=ts-loader' --module-bind 'tsx=ts-loader' --resolve-extensions .js,.ts,.tsx --mode development"
+    "examples:typescript": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/typescript/main.ts --output-filename bundle.js --content-base examples/typescript --module-bind 'js=babel-loader' --module-bind 'ts=ts-loader' --module-bind 'tsx=ts-loader' --resolve-extensions .js,.ts,.tsx --mode development"
   },
   "keywords": [
     "react",
