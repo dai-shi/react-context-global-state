@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.4.0] - 2018-10-13
 ### Changed
 - BREAKING: use PureComponent
 ### Added
