@@ -4,7 +4,7 @@ import { stateItemConsumers } from './state';
 
 const PersonConsumer = stateItemConsumers.person;
 
-const TextBox = () => (
+const Person = () => (
   <PersonConsumer>
     {(value, update) => (
       <div>
@@ -43,4 +43,4 @@ const TextBox = () => (
   </PersonConsumer>
 );
 
-export default TextBox;
+export default Person;
