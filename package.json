@@ -16,8 +16,10 @@
     "jest": "jest",
     "tslint": "tslint --project .",
     "tsc-test": "tsc --project . --noEmit",
-    "examples:minimal": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/minimal/main.js --output-filename bundle.js --content-base examples/minimal --module-bind 'js=babel-loader' --mode development",
-    "examples:typescript": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/typescript/main.ts --output-filename bundle.js --content-base examples/typescript --module-bind 'js=babel-loader' --module-bind 'ts=ts-loader' --module-bind 'tsx=ts-loader' --resolve-extensions .js,.ts,.tsx --mode development"
+    "examples:minimal": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/01_minimal/main.js --output-filename bundle.js --content-base examples/01_minimal --module-bind 'js=babel-loader' --mode development",
+    "ts-example": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/${NAME}/main.ts --output-filename bundle.js --content-base examples/${NAME} --module-bind 'js=babel-loader' --module-bind 'ts=ts-loader' --module-bind 'tsx=ts-loader' --resolve-extensions .js,.ts,.tsx --mode development",
+    "examples:typescript": "NAME=02_typescript npm run ts-example",
+    "examples:actions": "NAME=03_actions npm run ts-example"
   },
   "keywords": [
     "react",
