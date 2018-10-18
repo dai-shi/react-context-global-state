@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Fix dist up to date
 
 ## [0.4.0] - 2018-10-13
 ### Changed

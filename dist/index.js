@@ -24,8 +24,8 @@ var isFunction = function isFunction(fn) {
 };
 
 var createGlobalState = exports.createGlobalState = function createGlobalState(initialState) {
-  var consumers = {};
-  var updaters = {};
+  var stateItemConsumers = {};
+  var stateItemUpdaters = {};
   var StateProvider = function StateProvider(_ref) {
     var children = _ref.children;
     return _react2.default.createElement(
@@ -35,30 +35,46 @@ var createGlobalState = exports.createGlobalState = function createGlobalState(i
     );
   };
   Object.keys(initialState).forEach(function (name) {
-    var _React$createContext = _react2.default.createContext(initialState[name]),
+    var _React$createContext = _react2.default.createContext({
+      value: initialState[name],
+      update: function update() {
+        throw new Error('cannot update initial value');
+      }
+    }),
         Provider = _React$createContext.Provider,
         Consumer = _React$createContext.Consumer;
 
-    consumers[name] = Consumer;
+    stateItemConsumers[name] = function (_ref2) {
+      var children = _ref2.children;
+      return _react2.default.createElement(
+        Consumer,
+        null,
+        function (_ref3) {
+          var value = _ref3.value,
+              update = _ref3.update;
+          return children(value, update);
+        }
+      );
+    };
     var InnerProvider = StateProvider;
-    StateProvider = function (_React$Component) {
-      _inherits(StateProvider, _React$Component);
+    StateProvider = function (_React$PureComponent) {
+      _inherits(StateProvider, _React$PureComponent);
 
       function StateProvider() {
         _classCallCheck(this, StateProvider);
 
         var _this = _possibleConstructorReturn(this, (StateProvider.__proto__ || Object.getPrototypeOf(StateProvider)).call(this));
 
-        updaters[name] = function (func) {
+        stateItemUpdaters[name] = function (func) {
           if (isFunction(func)) {
             _this.setState(function (state) {
-              return Object.assign(state, { value: func(state.value) });
+              return Object.assign({}, state, { value: func(state.value) });
             });
           } else {
             _this.setState({ value: func });
           }
         };
-        _this.state = { value: initialState[name], update: updaters[name] };
+        _this.state = { value: initialState[name], update: stateItemUpdaters[name] };
         return _this;
       }
 
@@ -80,25 +96,17 @@ var createGlobalState = exports.createGlobalState = function createGlobalState(i
       }]);
 
       return StateProvider;
-    }(_react2.default.Component);
+    }(_react2.default.PureComponent);
   });
-  var StateConsumer = function StateConsumer(_ref2) {
-    var name = _ref2.name,
-        children = _ref2.children;
-
-    var Consumer = consumers[name];
-    return _react2.default.createElement(
-      Consumer,
-      null,
-      function (_ref3) {
-        var value = _ref3.value,
-            update = _ref3.update;
-        return children(value, update);
-      }
-    );
+  var StateConsumer = function StateConsumer(_ref4) {
+    var name = _ref4.name,
+        children = _ref4.children;
+    return stateItemConsumers[name]({ children: children });
   };
-  var getUpdater = function getUpdater(name) {
-    return updaters[name];
+  return {
+    StateProvider: StateProvider,
+    StateConsumer: StateConsumer,
+    stateItemConsumers: stateItemConsumers,
+    stateItemUpdaters: stateItemUpdaters
   };
-  return { StateProvider: StateProvider, StateConsumer: StateConsumer, getUpdater: getUpdater };
 };
