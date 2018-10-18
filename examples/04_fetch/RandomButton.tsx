@@ -1,8 +1,11 @@
 import * as React from 'react';
 
+import { composeWithState, ComposeWithState } from 'react-compose-state';
+
 import { setErrorMessage, setPageTitle } from './state';
 
-const fetchPageTitle = async () => {
+const fetchPageTitle = async (setLoading: SetLoading) => {
+  setLoading(true);
   try {
     const id = Math.floor(100 * Math.random());
     const url = `https://jsonplaceholder.typicode.com/posts/${id}`;
@@ -12,14 +15,25 @@ const fetchPageTitle = async () => {
   } catch (e) {
     setErrorMessage(`Error: ${e}`);
   }
+  setLoading(false);
 };
 
-const RandomButton = () => (
+type SetLoading = (x: boolean) => void;
+type Props = {
+  loading: boolean,
+  setLoading: SetLoading,
+};
+
+const RandomButton: React.SFC<Props> = ({ loading, setLoading }) => (
   <div>
-    <button type="button" onClick={fetchPageTitle}>
-      Random
-    </button>
+    {loading ? 'Loading...' : (
+      <button type="button" onClick={() => fetchPageTitle(setLoading)}>
+        Random
+      </button>
+    )}
   </div>
 );
 
-export default RandomButton;
+const RandomButtonWithState = composeWithState({ loading: false })(RandomButton);
+
+export default RandomButtonWithState;
