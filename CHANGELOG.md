@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Changed
 - Fix dist up to date
+- Update devDependencies
 
 ## [0.4.0] - 2018-10-13
 ### Changed
