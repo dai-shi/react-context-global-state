@@ -1,6 +1,10 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.5.0] - 2018-10-18
+### Added
+- Various examples
 ### Changed
 - Fix dist up to date
 - Update devDependencies
