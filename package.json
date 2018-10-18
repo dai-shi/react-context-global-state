@@ -9,6 +9,7 @@
   },
   "main": "./dist/index.js",
   "module": "./src/index.js",
+  "types": "./src/index.d.ts",
   "scripts": {
     "compile": "babel src -d dist",
     "test": "npm run eslint && npm run tslint && npm run tsc-test && npm run jest",
@@ -16,11 +17,11 @@
     "jest": "jest",
     "tslint": "tslint --project .",
     "tsc-test": "tsc --project . --noEmit",
-    "examples:minimal": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/01_minimal/main.js --output-filename bundle.js --content-base examples/01_minimal --module-bind 'js=babel-loader' --mode development",
-    "ts-example": "webpack-dev-server --port ${PORT:-8080} --entry ./examples/${NAME}/main.ts --output-filename bundle.js --content-base examples/${NAME} --module-bind 'js=babel-loader' --module-bind 'ts=ts-loader' --module-bind 'tsx=ts-loader' --resolve-extensions .js,.ts,.tsx --mode development",
-    "examples:typescript": "NAME=02_typescript npm run ts-example",
-    "examples:actions": "NAME=03_actions npm run ts-example",
-    "examples:fetch": "NAME=04_fetch npm run ts-example"
+    "examples:minimal": "webpack-dev-server --entry ./examples/01_minimal/main.js --content-base examples/01_minimal",
+    "examples:typescript": "webpack-dev-server --entry ./examples/02_typescript/main.ts --content-base examples/02_typescript",
+    "examples:actions": "webpack-dev-server --entry ./examples/03_actions/main.ts --content-base examples/03_actions",
+    "examples:fetch": "webpack-dev-server --entry ./examples/04_fetch/main.ts --content-base examples/04_fetch",
+    "examples:onmount": "webpack-dev-server --entry ./examples/05_onmount/main.ts --content-base examples/05_onmount"
   },
   "keywords": [
     "react",
@@ -52,6 +53,7 @@
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
     "react": "^16.5.2",
+    "react-compose-onmount": "^1.1.0",
     "react-dom": "^16.5.2",
     "ts-loader": "^5.2.2",
     "tslint": "^5.11.0",
