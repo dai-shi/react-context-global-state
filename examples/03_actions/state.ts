@@ -15,35 +15,25 @@ export const {
 
 export const countUp = () => {
   const update = stateItemUpdaters.counter1;
-  if (update) {
-    update(v => v + 1);
-  }
+  update(v => v + 1);
 };
 
 export const countDown = () => {
   const update = stateItemUpdaters.counter1;
-  if (update) {
-    update(v => v - 1);
-  }
+  update(v => v - 1);
 };
 
 export const setPersonFirstName = (firstName: string) => {
   const update = stateItemUpdaters.person;
-  if (update) {
-    update(v => ({ ...v, firstName }));
-  }
+  update(v => ({ ...v, firstName }));
 };
 
 export const setPersonLastName = (lastName: string) => {
   const update = stateItemUpdaters.person;
-  if (update) {
-    update(v => ({ ...v, lastName }));
-  }
+  update(v => ({ ...v, lastName }));
 };
 
 export const setPersonAge = (age: number) => {
   const update = stateItemUpdaters.person;
-  if (update) {
-    update(v => ({ ...v, age }));
-  }
+  update(v => ({ ...v, age }));
 };

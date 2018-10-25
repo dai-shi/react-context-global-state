@@ -4,6 +4,7 @@ const isFunction = fn => (typeof fn === 'function');
 
 export const createGlobalState = (initialState) => {
   const stateItemConsumers = {};
+  const stateItemUpdateListeners = {};
   const stateItemUpdaters = {};
   let StateProvider = ({ children }) => <React.Fragment>{children}</React.Fragment>;
   Object.keys(initialState).forEach((name) => {
@@ -16,17 +17,21 @@ export const createGlobalState = (initialState) => {
         {({ value, update }) => children(value, update)}
       </Consumer>
     );
+    stateItemUpdateListeners[name] = [];
+    stateItemUpdaters[name] = (func) => {
+      stateItemUpdateListeners[name].forEach(listener => listener(func));
+    };
     const InnerProvider = StateProvider;
     StateProvider = class extends React.PureComponent {
       constructor() {
         super();
-        stateItemUpdaters[name] = (func) => {
+        stateItemUpdateListeners[name].push((func) => {
           if (isFunction(func)) {
             this.setState(state => Object.assign({}, state, { value: func(state.value) }));
           } else {
             this.setState({ value: func });
           }
-        };
+        });
         this.state = { value: initialState[name], update: stateItemUpdaters[name] };
       }
 
@@ -43,6 +48,8 @@ export const createGlobalState = (initialState) => {
     };
   });
   const StateConsumer = ({ name, children }) => stateItemConsumers[name]({ children });
+  Object.freeze(stateItemConsumers);
+  Object.freeze(stateItemUpdaters);
   return {
     StateProvider,
     StateConsumer,

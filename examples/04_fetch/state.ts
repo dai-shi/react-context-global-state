@@ -11,14 +11,10 @@ export const {
 
 export const setErrorMessage = (s: string) => {
   const update = stateItemUpdaters.errorMessage;
-  if (update) {
-    update(s);
-  }
+  update(s);
 };
 
 export const setPageTitle = (s: string) => {
   const update = stateItemUpdaters.pageTitle;
-  if (update) {
-    update(s);
-  }
+  update(s);
 };

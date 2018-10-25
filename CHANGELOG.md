@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Non nullable updaters
 
 ## [0.5.0] - 2018-10-18
 ### Added
