@@ -4,39 +4,36 @@ import {
   setPersonAge,
   setPersonFirstName,
   setPersonLastName,
-  stateItemConsumers,
+  useStatePerson,
 } from './state';
 
-const PersonConsumer = stateItemConsumers.person;
-
-const Person = () => (
-  <PersonConsumer>
-    {({ firstName, lastName, age }) => (
+const Person = () => {
+  const { firstName, lastName, age } = useStatePerson();
+  return (
+    <div>
       <div>
-        <div>
-          First Name:
-          <input
-            value={firstName}
-            onChange={event => setPersonFirstName(event.target.value)}
-          />
-        </div>
-        <div>
-          Last Name:
-          <input
-            value={lastName}
-            onChange={event => setPersonLastName(event.target.value)}
-          />
-        </div>
-        <div>
-          Age:
-          <input
-            value={age}
-            onChange={event => setPersonAge(Number(event.target.value) || 0)}
-          />
-        </div>
+        First Name:
+        <input
+          value={firstName}
+          onChange={event => setPersonFirstName(event.target.value)}
+        />
       </div>
-    )}
-  </PersonConsumer>
-);
+      <div>
+        Last Name:
+        <input
+          value={lastName}
+          onChange={event => setPersonLastName(event.target.value)}
+        />
+      </div>
+      <div>
+        Age:
+        <input
+          value={age}
+          onChange={event => setPersonAge(Number(event.target.value) || 0)}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Person;

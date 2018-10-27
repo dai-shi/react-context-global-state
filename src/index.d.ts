@@ -21,4 +21,5 @@ export const createGlobalState: <S extends {}>(initialState: S) => {
   StateConsumer: React.ComponentType<StateConsumerProps>,
   stateItemConsumers: { [K in keyof S]: React.ComponentType<StateItemConsumerProps<S[K]>> },
   stateItemUpdaters: { [K in keyof S]: StateItemUpdater<S[K]> },
+  stateItemHooks: { [K in keyof S]: () => S[K] },
 };

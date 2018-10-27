@@ -1,9 +1,9 @@
 import { createGlobalState } from '../../src/index';
 
-export const {
+const {
   StateProvider,
-  stateItemConsumers,
   stateItemUpdaters,
+  stateItemHooks,
 } = createGlobalState({
   counter1: 0,
   person: {
@@ -12,6 +12,8 @@ export const {
     lastName: '',
   },
 });
+
+export { StateProvider };
 
 export const countUp = () => {
   const update = stateItemUpdaters.counter1;
@@ -37,3 +39,7 @@ export const setPersonAge = (age: number) => {
   const update = stateItemUpdaters.person;
   update(v => ({ ...v, age }));
 };
+
+export const useStateCounter1 = stateItemHooks.counter1;
+
+export const useStatePerson = stateItemHooks.person;
