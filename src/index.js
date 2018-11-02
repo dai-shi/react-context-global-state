@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement as h } from 'react';
 
 const isFunction = fn => (typeof fn === 'function');
 
@@ -6,17 +6,14 @@ export const createGlobalState = (initialState) => {
   const stateItemConsumers = {};
   const stateItemUpdateListeners = {};
   const stateItemUpdaters = {};
-  let StateProvider = ({ children }) => <React.Fragment>{children}</React.Fragment>;
+  let StateProvider = ({ children }) => h(React.Fragment, null, children);
   Object.keys(initialState).forEach((name) => {
     const { Provider, Consumer } = React.createContext({
       value: initialState[name],
       update: () => { throw new Error('cannot update initial value'); },
     });
-    stateItemConsumers[name] = ({ children }) => (
-      <Consumer>
-        {({ value, update }) => children(value, update)}
-      </Consumer>
-    );
+    stateItemConsumers[name] = ({ children }) => h(Consumer, null,
+      ({ value, update }) => children(value, update));
     stateItemUpdateListeners[name] = [];
     stateItemUpdaters[name] = (func) => {
       stateItemUpdateListeners[name].forEach(listener => listener(func));
@@ -37,13 +34,8 @@ export const createGlobalState = (initialState) => {
 
       render() {
         const { children } = this.props;
-        return (
-          <Provider value={this.state}>
-            <InnerProvider>
-              {children}
-            </InnerProvider>
-          </Provider>
-        );
+        return h(Provider, { value: this.state },
+          h(InnerProvider, null, children));
       }
     };
   });
