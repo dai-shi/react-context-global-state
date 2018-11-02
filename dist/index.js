@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createGlobalState = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -38,7 +38,7 @@ var createGlobalState = function createGlobalState(initialState) {
 
   var StateProvider = function StateProvider(_ref) {
     var children = _ref.children;
-    return _react.default.createElement(_react.default.Fragment, null, children);
+    return (0, _react.createElement)(_react.default.Fragment, null, children);
   };
 
   Object.keys(initialState).forEach(function (name) {
@@ -53,7 +53,7 @@ var createGlobalState = function createGlobalState(initialState) {
 
     stateItemConsumers[name] = function (_ref2) {
       var children = _ref2.children;
-      return _react.default.createElement(Consumer, null, function (_ref3) {
+      return (0, _react.createElement)(Consumer, null, function (_ref3) {
         var value = _ref3.value,
             update = _ref3.update;
         return children(value, update);
@@ -105,9 +105,9 @@ var createGlobalState = function createGlobalState(initialState) {
         key: "render",
         value: function render() {
           var children = this.props.children;
-          return _react.default.createElement(Provider, {
+          return (0, _react.createElement)(Provider, {
             value: this.state
-          }, _react.default.createElement(InnerProvider, null, children));
+          }, (0, _react.createElement)(InnerProvider, null, children));
         }
       }]);
 

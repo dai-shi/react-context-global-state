@@ -1,7 +1,10 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.0.0] - 2018-11-02
 ### Changed
+- Fix the API
 - No JSX in library code
 
 ## [0.6.0] - 2018-10-25
