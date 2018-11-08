@@ -85,7 +85,7 @@ An object of `{ StateProvider, StateConsumer, setGlobalState }`
 
 The `update` function above is similar to `Component.prototype.setState`, and accepts either an updating function or a new value itself.
 
-`setGlobalState`: a function to update a value in global state from outside of components. It recevies a `name` and a `update` function.
+`setGlobalState`: a function to update a value in global state from outside of components. It recevies a `name` and a `update` value (or function).
 
 Blogs
 -----
