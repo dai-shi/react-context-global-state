@@ -1,20 +1,24 @@
 import { createGlobalState } from '../../src/index';
 
-export const {
-  StateProvider,
-  stateItemConsumers,
-  stateItemUpdaters,
-} = createGlobalState({
+const initialState = {
   errorMessage: '',
   pageTitle: '',
-});
+};
+
+export type State = typeof initialState;
+
+const {
+  StateProvider,
+  StateConsumer,
+  setGlobalState,
+} = createGlobalState(initialState);
 
 export const setErrorMessage = (s: string) => {
-  const update = stateItemUpdaters.errorMessage;
-  update(s);
+  setGlobalState('errorMessage', s);
 };
 
 export const setPageTitle = (s: string) => {
-  const update = stateItemUpdaters.pageTitle;
-  update(s);
+  setGlobalState('pageTitle', s);
 };
+
+export { StateProvider, StateConsumer };

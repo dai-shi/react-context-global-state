@@ -40,12 +40,9 @@ export const createGlobalState = (initialState) => {
     };
   });
   const StateConsumer = ({ name, children }) => stateItemConsumers[name]({ children });
-  Object.freeze(stateItemConsumers);
-  Object.freeze(stateItemUpdaters);
   return {
     StateProvider,
     StateConsumer,
-    stateItemConsumers,
-    stateItemUpdaters,
+    setGlobalState: (name, update) => stateItemUpdaters[name](update),
   };
 };

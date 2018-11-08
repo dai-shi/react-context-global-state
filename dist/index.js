@@ -123,13 +123,12 @@ var createGlobalState = function createGlobalState(initialState) {
     });
   };
 
-  Object.freeze(stateItemConsumers);
-  Object.freeze(stateItemUpdaters);
   return {
     StateProvider: StateProvider,
     StateConsumer: StateConsumer,
-    stateItemConsumers: stateItemConsumers,
-    stateItemUpdaters: stateItemUpdaters
+    setGlobalState: function setGlobalState(name, update) {
+      return stateItemUpdaters[name](update);
+    }
   };
 };
 

@@ -1,10 +1,14 @@
 import { createGlobalState } from '../../src/index';
 
-export const { StateProvider, stateItemConsumers } = createGlobalState({
+const initialState = {
   counter1: 0,
   person: {
     age: 0,
     firstName: '',
     lastName: '',
   },
-});
+};
+
+export type State = typeof initialState;
+
+export const { StateProvider, StateConsumer } = createGlobalState(initialState);

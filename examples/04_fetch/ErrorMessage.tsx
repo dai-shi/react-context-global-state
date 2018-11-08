@@ -1,17 +1,19 @@
 import * as React from 'react';
 
-import { stateItemConsumers } from './state';
+import { StateConsumerType } from '../../src/index';
 
-const ErrorMessageConsumer = stateItemConsumers.errorMessage;
+import { State, StateConsumer } from './state';
+
+const ErrorMessageStateConsumer = StateConsumer as StateConsumerType<State, 'errorMessage'>;
 
 const ErrorMessage = () => (
-  <ErrorMessageConsumer>
+  <ErrorMessageStateConsumer name="errorMessage">
     {value => (
       <div style={{ color: 'red' }}>
         {value}
       </div>
     )}
-  </ErrorMessageConsumer>
+  </ErrorMessageStateConsumer>
 );
 
 export default ErrorMessage;

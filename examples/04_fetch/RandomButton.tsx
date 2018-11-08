@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { composeWithState, ComposeWithState } from 'react-compose-state';
+import { composeWithState } from 'react-compose-state';
 
 import { setErrorMessage, setPageTitle } from './state';
 

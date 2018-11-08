@@ -1,11 +1,13 @@
 import * as React from 'react';
 
-import { stateItemConsumers } from './state';
+import { StateConsumerType } from '../../src/index';
 
-const PersonConsumer = stateItemConsumers.person;
+import { State, StateConsumer } from './state';
+
+const PersonStateConsumer = StateConsumer as StateConsumerType<State, 'person'>;
 
 const Person = () => (
-  <PersonConsumer>
+  <PersonStateConsumer name="person">
     {(value, update) => (
       <div>
         <div>
@@ -40,7 +42,7 @@ const Person = () => (
         </div>
       </div>
     )}
-  </PersonConsumer>
+  </PersonStateConsumer>
 );
 
 export default Person;

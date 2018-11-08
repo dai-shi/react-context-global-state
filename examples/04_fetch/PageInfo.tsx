@@ -1,18 +1,20 @@
 import * as React from 'react';
 
-import { stateItemConsumers } from './state';
+import { StateConsumerType } from '../../src/index';
 
-const PageTitleConsumer = stateItemConsumers.pageTitle;
+import { State, StateConsumer } from './state';
+
+const PageTitleStateConsumer = StateConsumer as StateConsumerType<State, 'pageTitle'>;
 
 const PageInfo = () => (
-  <PageTitleConsumer>
+  <PageTitleStateConsumer name="pageTitle">
     {value => (
       <div>
         <h1>PageInfo</h1>
         {value}
       </div>
     )}
-  </PageTitleConsumer>
+  </PageTitleStateConsumer>
 );
 
 export default PageInfo;

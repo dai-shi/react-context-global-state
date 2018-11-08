@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [2.0.0] - 2018-11-08
+### Changed
+- Changed the API for TypeScript
+
 ## [1.0.0] - 2018-11-02
 ### Changed
 - Fix the API

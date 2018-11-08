@@ -77,13 +77,15 @@ createGlobalState(initialState)
 `initialState`: an object like `{ name1: value1, name2: value2, ... }`
 
 ### Return value
-An object of `{ StateProvider, StateConsumer }`
+An object of `{ StateProvider, StateConsumer, setGlobalState }`
 
 `StateProvider`: a component to provide entire state
 
 `StateConsumer`: a component that receives a required `name` prop and invokes a child function prop whose signature is `(value, update) => {}` where `value` is the state value specified by the `name` and `update` is a function to update the value
 
 The `update` function above is similar to `Component.prototype.setState`, and accepts either an updating function or a new value itself.
+
+`setGlobalState`: a function to update a value in global state from outside of components. It recevies a `name` and a `update` function.
 
 Blogs
 -----

@@ -1,24 +1,25 @@
 import * as React from 'react';
 
 export type StateProviderProps = {
-  children?: React.ReactNode;
+  children?: React.ReactNode,
 };
 
-export type StateConsumerProps = {
-  name: string;
-  // tslint:disable-next-line:no-any
-  children?: (value: any, update: (f: any) => void) => React.ReactNode;
+export type Update<T> = ((v: T) => T) | T;
+
+export type StateConsumerProps<S, N extends keyof S> = {
+  name: N,
+  children?: (value: S[N], updater: (u: Update<S[N]>) => void) => React.ReactNode,
 };
 
-export type StateItemUpdater<T> = (f: ((v: T) => T) | T) => void;
+export type StateConsumerType<S, N extends keyof S> = React.ComponentType<StateConsumerProps<S, N>>;
 
-export type StateItemConsumerProps<T> = {
-  children?: (value: T, update: StateItemUpdater<T>) => React.ReactNode;
-};
+export type SetGlobalState<S> = <N extends keyof S>(
+  name: N,
+  update: Update<S[N]>,
+) => void;
 
-export const createGlobalState: <S extends {}>(initialState: S) => {
+export const createGlobalState: <S extends {}, N extends keyof S>(initialState: S) => {
   StateProvider: React.ComponentType<StateProviderProps>,
-  StateConsumer: React.ComponentType<StateConsumerProps>,
-  stateItemConsumers: { [K in keyof S]: React.ComponentType<StateItemConsumerProps<S[K]>> },
-  stateItemUpdaters: { [K in keyof S]: StateItemUpdater<S[K]> },
+  StateConsumer: StateConsumerType<S, N>,
+  setGlobalState: SetGlobalState<S>,
 };
