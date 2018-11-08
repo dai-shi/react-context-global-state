@@ -91,3 +91,4 @@ Blogs
 -----
 
 - [React global state by Context API](https://medium.com/@dai_shi/react-global-state-by-context-api-5b3efa8acc6b)
+- [React global state by Context API for TypeScript](https://medium.com/@dai_shi/react-global-state-by-context-api-for-typescript-eaf9f4cf1381)
