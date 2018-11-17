@@ -87,6 +87,8 @@ The `update` function above is similar to `Component.prototype.setState`, and ac
 
 `setGlobalState`: a function to update a value in global state from outside of components. It recevies a `name` and a `update` value (or function).
 
+`getGlobalState`: a function to get a value in global state from outside of components. It recevies a `name`.
+
 Blogs
 -----
 

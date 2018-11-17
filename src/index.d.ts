@@ -18,8 +18,13 @@ export type SetGlobalState<S> = <N extends keyof S>(
   update: Update<S[N]>,
 ) => void;
 
+export type GetGlobalState<S> = <N extends keyof S>(
+  name: N,
+) => S[N];
+
 export const createGlobalState: <S extends {}, N extends keyof S>(initialState: S) => {
   StateProvider: React.ComponentType<StateProviderProps>,
   StateConsumer: StateConsumerType<S, N>,
   setGlobalState: SetGlobalState<S>,
+  getGlobalState: GetGlobalState<S>,
 };

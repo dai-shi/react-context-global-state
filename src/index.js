@@ -6,6 +6,7 @@ export const createGlobalState = (initialState) => {
   const stateItemConsumers = {};
   const stateItemUpdateListeners = {};
   const stateItemUpdaters = {};
+  let globalState;
   let StateProvider = ({ children }) => h(React.Fragment, null, children);
   Object.keys(initialState).forEach((name) => {
     const { Provider, Consumer } = React.createContext({
@@ -29,7 +30,11 @@ export const createGlobalState = (initialState) => {
             this.setState({ value: func });
           }
         });
-        this.state = { value: initialState[name], update: stateItemUpdaters[name] };
+        this.state = globalState = { value: initialState[name], update: stateItemUpdaters[name] };
+      }
+
+      componentDidUpdate() {
+        globalState = this.state;
       }
 
       render() {
@@ -44,5 +49,6 @@ export const createGlobalState = (initialState) => {
     StateProvider,
     StateConsumer,
     setGlobalState: (name, update) => stateItemUpdaters[name](update),
+    getGlobalState: (name) => globalState[name],
   };
 };
