@@ -23,14 +23,16 @@ export const createGlobalState = (initialState) => {
     StateProvider = class extends React.PureComponent {
       constructor() {
         super();
-        stateItemUpdateListeners[name].push((func) => {
-          if (isFunction(func)) {
-            this.setState(state => Object.assign({}, state, { value: func(state.value) }));
+        stateItemUpdateListeners[name].push((funcOrValue) => {
+          let newValue;
+          if (isFunction(funcOrValue)) {
+            const { value: oldValue } = this.state;
+            newValue = funcOrValue(oldValue);
           } else {
-            this.setState({ value: func });
+            newValue = funcOrValue;
           }
-          const { value } = this.state;
-          stateItemValues[name] = value;
+          this.setState({ value: newValue });
+          stateItemValues[name] = newValue;
         });
         this.state = { value: initialState[name], update: stateItemUpdaters[name] };
       }

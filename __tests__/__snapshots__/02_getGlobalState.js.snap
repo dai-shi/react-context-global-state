@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getGlobalState should update state 1`] = `
+<App>
+  <StateProvider>
+    <StateProvider>
+      <div>
+        <Counter>
+          <StateConsumer
+            name="counter1"
+          >
+            <div>
+              <span>
+                0
+              </span>
+              <button
+                onClick={[Function]}
+                type="button"
+              >
+                +1
+              </button>
+            </div>
+          </StateConsumer>
+        </Counter>
+      </div>
+    </StateProvider>
+  </StateProvider>
+</App>
+`;
+
+exports[`getGlobalState should update state 2`] = `0`;
+
+exports[`getGlobalState should update state 3`] = `
+<App>
+  <StateProvider>
+    <StateProvider>
+      <div>
+        <Counter>
+          <StateConsumer
+            name="counter1"
+          >
+            <div>
+              <span>
+                1
+              </span>
+              <button
+                onClick={[Function]}
+                type="button"
+              >
+                +1
+              </button>
+            </div>
+          </StateConsumer>
+        </Counter>
+      </div>
+    </StateProvider>
+  </StateProvider>
+</App>
+`;
+
+exports[`getGlobalState should update state 4`] = `1`;
