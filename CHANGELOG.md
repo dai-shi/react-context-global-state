@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- New API: getGlobalState
 
 ## [2.0.0] - 2018-11-08
 ### Changed
