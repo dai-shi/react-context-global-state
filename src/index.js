@@ -31,8 +31,8 @@ export const createGlobalState = (initialState) => {
           } else {
             newValue = funcOrValue;
           }
-          this.setState({ value: newValue });
           stateItemValues[name] = newValue;
+          this.setState({ value: newValue });
         });
         this.state = { value: initialState[name], update: stateItemUpdaters[name] };
       }
