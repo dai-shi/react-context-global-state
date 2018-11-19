@@ -6,7 +6,7 @@ export const createGlobalState = (initialState) => {
   const stateItemConsumers = {};
   const stateItemUpdateListeners = {};
   const stateItemUpdaters = {};
-  let globalState;
+  const stateItemValues = initialState;
   let StateProvider = ({ children }) => h(React.Fragment, null, children);
   Object.keys(initialState).forEach((name) => {
     const { Provider, Consumer } = React.createContext({
@@ -23,18 +23,18 @@ export const createGlobalState = (initialState) => {
     StateProvider = class extends React.PureComponent {
       constructor() {
         super();
-        stateItemUpdateListeners[name].push((func) => {
-          if (isFunction(func)) {
-            this.setState(state => Object.assign({}, state, { value: func(state.value) }));
+        stateItemUpdateListeners[name].push((funcOrValue) => {
+          let newValue;
+          if (isFunction(funcOrValue)) {
+            const { value: oldValue } = this.state;
+            newValue = funcOrValue(oldValue);
           } else {
-            this.setState({ value: func });
+            newValue = funcOrValue;
           }
+          this.setState({ value: newValue });
+          stateItemValues[name] = newValue;
         });
-        this.state = globalState = { value: initialState[name], update: stateItemUpdaters[name] };
-      }
-
-      componentDidUpdate() {
-        globalState = this.state;
+        this.state = { value: initialState[name], update: stateItemUpdaters[name] };
       }
 
       render() {
@@ -49,6 +49,6 @@ export const createGlobalState = (initialState) => {
     StateProvider,
     StateConsumer,
     setGlobalState: (name, update) => stateItemUpdaters[name](update),
-    getGlobalState: (name) => globalState[name],
+    getGlobalState: name => stateItemValues[name],
   };
 };

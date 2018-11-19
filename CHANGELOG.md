@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [2.1.0] - 2018-11-17
+### Added
+- New API: getGlobalState
+
 ## [2.0.0] - 2018-11-08
 ### Changed
 - Changed the API for TypeScript

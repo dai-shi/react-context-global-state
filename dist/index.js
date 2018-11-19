@@ -35,6 +35,7 @@ var createGlobalState = function createGlobalState(initialState) {
   var stateItemConsumers = {};
   var stateItemUpdateListeners = {};
   var stateItemUpdaters = {};
+  var stateItemValues = initialState;
 
   var StateProvider = function StateProvider(_ref) {
     var children = _ref.children;
@@ -81,18 +82,21 @@ var createGlobalState = function createGlobalState(initialState) {
         _classCallCheck(this, StateProvider);
 
         _this = _possibleConstructorReturn(this, _getPrototypeOf(StateProvider).call(this));
-        stateItemUpdateListeners[name].push(function (func) {
-          if (isFunction(func)) {
-            _this.setState(function (state) {
-              return Object.assign({}, state, {
-                value: func(state.value)
-              });
-            });
+        stateItemUpdateListeners[name].push(function (funcOrValue) {
+          var newValue;
+
+          if (isFunction(funcOrValue)) {
+            var oldValue = _this.state.value;
+            newValue = funcOrValue(oldValue);
           } else {
-            _this.setState({
-              value: func
-            });
+            newValue = funcOrValue;
           }
+
+          _this.setState({
+            value: newValue
+          });
+
+          stateItemValues[name] = newValue;
         });
         _this.state = {
           value: initialState[name],
@@ -128,6 +132,9 @@ var createGlobalState = function createGlobalState(initialState) {
     StateConsumer: StateConsumer,
     setGlobalState: function setGlobalState(name, update) {
       return stateItemUpdaters[name](update);
+    },
+    getGlobalState: function getGlobalState(name) {
+      return stateItemValues[name];
     }
   };
 };
