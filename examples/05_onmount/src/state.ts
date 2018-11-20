@@ -1,4 +1,4 @@
-import { createGlobalState } from '../../src/index';
+import { createGlobalState } from 'react-context-global-state';
 
 const initialState = {
   errorMessage: '',

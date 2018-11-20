@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StateConsumerType } from '../../src/index';
+import { StateConsumerType } from 'react-context-global-state';
 
 import { State, StateConsumer } from './state';
 

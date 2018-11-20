@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createGlobalState } from '../../src/index';
+import { createGlobalState } from 'react-context-global-state';
 
 const initialState = {
   counter1: 0,
