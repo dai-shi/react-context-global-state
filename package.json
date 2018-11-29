@@ -1,7 +1,7 @@
 {
   "name": "react-context-global-state",
   "description": "Simple global state for React by Context API",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Daishi Kato",
   "repository": {
     "type": "git",
@@ -10,6 +10,10 @@
   "main": "./dist/index.js",
   "module": "./src/index.js",
   "types": "./src/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "compile": "babel src -d dist",
     "test": "npm run eslint && npm run tslint && npm run tsc-test && npm run jest",
