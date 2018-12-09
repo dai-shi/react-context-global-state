@@ -1,7 +1,7 @@
 {
   "name": "react-context-global-state",
   "description": "Simple global state for React by Context API",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "author": "Daishi Kato",
   "repository": {
     "type": "git",
