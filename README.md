@@ -5,7 +5,7 @@ react-context-global-state
 [![npm version](https://badge.fury.io/js/react-context-global-state.svg)](https://badge.fury.io/js/react-context-global-state)
 [![bundle size](https://badgen.net/bundlephobia/minzip/react-context-global-state)](https://bundlephobia.com/result?p=react-context-global-state)
 
-Simple global state for React by Context API
+Simple global state for React with Context API
 
 Background
 ----------
