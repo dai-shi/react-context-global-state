@@ -20,8 +20,8 @@ const fetchPageTitle = async (setLoading: SetLoading) => {
 
 type SetLoading = (x: boolean) => void;
 type Props = {
-  loading: boolean,
-  setLoading: SetLoading,
+  loading: boolean;
+  setLoading: SetLoading;
 };
 
 const RandomButton: React.SFC<Props> = ({ loading, setLoading }) => (

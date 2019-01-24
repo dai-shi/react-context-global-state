@@ -2,7 +2,12 @@ import * as React from 'react';
 
 import { StateConsumerType } from 'react-context-global-state';
 
-import { countDown, countUp, State, StateConsumer } from './state';
+import {
+  countDown,
+  countUp,
+  State,
+  StateConsumer,
+} from './state';
 
 const Counter1StateConsumer = StateConsumer as StateConsumerType<State, 'counter1'>;
 
