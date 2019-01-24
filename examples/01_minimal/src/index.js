@@ -15,10 +15,7 @@ const Counter = () => (
   <StateConsumer name="counter1">
     {(value, update) => (
       <div>
-        <span>
-          Count:
-          {value}
-        </span>
+        <span>Count:{value}</span>
         <button type="button" onClick={() => update(value + 1)}>+1</button>
         <button type="button" onClick={() => update(value - 1)}>-1</button>
       </div>
@@ -30,10 +27,7 @@ const TextBox = () => (
   <StateConsumer name="text1">
     {(value, update) => (
       <div>
-        <span>
-          Text:
-          {value}
-        </span>
+        <span>Text:{value}</span>
         <input value={value} onChange={event => update(event.target.value)} />
       </div>
     )}

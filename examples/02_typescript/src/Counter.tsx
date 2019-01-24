@@ -10,10 +10,7 @@ const Counter = () => (
   <Counter1StateConsumer name="counter1">
     {(value, update) => (
       <div>
-        <span>
-          Count:
-          {value}
-        </span>
+        <span>Count:{value}</span>
         <button type="button" onClick={() => update(v => v + 1)}>+1</button>
         <button type="button" onClick={() => update(v => v - 1)}>-1</button>
       </div>

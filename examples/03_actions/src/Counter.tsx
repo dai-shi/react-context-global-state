@@ -15,10 +15,7 @@ const Counter = () => (
   <Counter1StateConsumer name="counter1">
     {value => (
       <div>
-        <span>
-          Count:
-          {value}
-        </span>
+        <span>Count:{value}</span>
         <button type="button" onClick={countUp}>+1</button>
         <button type="button" onClick={countDown}>-1</button>
       </div>
