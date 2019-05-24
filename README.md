@@ -1,5 +1,4 @@
-react-context-global-state
-==========================
+# react-context-global-state
 
 [![Build Status](https://travis-ci.com/dai-shi/react-context-global-state.svg?branch=master)](https://travis-ci.com/dai-shi/react-context-global-state)
 [![npm version](https://badge.fury.io/js/react-context-global-state.svg)](https://badge.fury.io/js/react-context-global-state)
@@ -7,8 +6,7 @@ react-context-global-state
 
 Simple global state for React with Context API
 
-Background
-----------
+## Background
 
 React v16.3 introduces a new Context API.
 Context API allows to pass values down to a component tree
@@ -19,15 +17,13 @@ this package is developed.
 This package provides a simple way to define a global state
 with Context API.
 
-Install
--------
+## Install
 
 ```bash
 npm install react-context-global-state
 ```
 
-Usage
------
+## Usage
 
 ```javascript
 import React from 'react';
@@ -54,8 +50,7 @@ const App = () => (
 );
 ```
 
-Examples
---------
+## Examples
 
 The [examples](examples) folder contains working examples.
 You can run one of them with
@@ -73,8 +68,7 @@ You can also try them in codesandbox.io:
 [04](https://codesandbox.io/s/github/dai-shi/react-context-global-state/tree/master/examples/04_fetch)
 [05](https://codesandbox.io/s/github/dai-shi/react-context-global-state/tree/master/examples/05_onmount)
 
-Reference
----------
+## Reference
 
 ### Syntax
 ```
@@ -97,8 +91,7 @@ The `update` function above is similar to `Component.prototype.setState`, and ac
 
 `getGlobalState`: a function to get a value in global state from outside of components. It recevies a `name`.
 
-Blogs
------
+## Blogs
 
-- [React global state by Context API](https://medium.com/@dai_shi/react-global-state-by-context-api-5b3efa8acc6b)
-- [React global state by Context API for TypeScript](https://medium.com/@dai_shi/react-global-state-by-context-api-for-typescript-eaf9f4cf1381)
+- [React global state by Context API](https://blog.axlight.com/posts/react-global-state-by-context-api/)
+- [React global state by Context API for TypeScript](https://blog.axlight.com/posts/react-global-state-by-context-api-for-typescript/)
