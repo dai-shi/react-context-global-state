@@ -9,13 +9,13 @@ import {
   StateConsumer,
 } from './state';
 
-const Counter1StateConsumer = StateConsumer as StateConsumerType<State, 'counter1'>;
+const Counter1StateConsumer = StateConsumer as StateConsumerType<State, 'count1'>;
 
 const Counter = () => (
-  <Counter1StateConsumer name="counter1">
+  <Counter1StateConsumer name="count1">
     {value => (
       <div>
-        <span>Count:{value}</span>
+        <span>Count: {value}</span>
         <button type="button" onClick={countUp}>+1</button>
         <button type="button" onClick={countDown}>-1</button>
       </div>

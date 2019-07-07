@@ -1,7 +1,7 @@
 import { createGlobalState } from 'react-context-global-state';
 
 const initialState = {
-  counter1: 0,
+  count1: 0,
   person: {
     age: 0,
     firstName: '',
@@ -14,11 +14,11 @@ export type State = typeof initialState;
 const { StateProvider, StateConsumer, setGlobalState } = createGlobalState(initialState);
 
 export const countUp = () => {
-  setGlobalState('counter1', v => v + 1);
+  setGlobalState('count1', v => v + 1);
 };
 
 export const countDown = () => {
-  setGlobalState('counter1', v => v - 1);
+  setGlobalState('count1', v => v - 1);
 };
 
 export const setPersonFirstName = (firstName: string) => {

@@ -1,7 +1,7 @@
 import { createGlobalState } from 'react-context-global-state';
 
 const initialState = {
-  counter1: 0,
+  count1: 0,
   person: {
     age: 0,
     firstName: '',

@@ -16,11 +16,11 @@ describe('basic spec', () => {
 
   it('should create a component with a global state', () => {
     const initialState = {
-      counter1: 0,
+      count1: 0,
     };
     const { StateProvider, StateConsumer } = createGlobalState(initialState);
     const Counter = () => (
-      <StateConsumer name="counter1">
+      <StateConsumer name="count1">
         {(value, update) => (
           <div>
             <span>{value}</span>

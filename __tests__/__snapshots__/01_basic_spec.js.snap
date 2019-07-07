@@ -9,7 +9,7 @@ exports[`basic spec should create a component with a global state 1`] = `
       >
         <Counter>
           <StateConsumer
-            name="counter1"
+            name="count1"
           >
             <div>
               <span>
@@ -30,7 +30,7 @@ exports[`basic spec should create a component with a global state 1`] = `
       >
         <Counter>
           <StateConsumer
-            name="counter1"
+            name="count1"
           >
             <div>
               <span>
@@ -60,7 +60,7 @@ exports[`basic spec should create a component with a global state 2`] = `
       >
         <Counter>
           <StateConsumer
-            name="counter1"
+            name="count1"
           >
             <div>
               <span>
@@ -81,7 +81,7 @@ exports[`basic spec should create a component with a global state 2`] = `
       >
         <Counter>
           <StateConsumer
-            name="counter1"
+            name="count1"
           >
             <div>
               <span>

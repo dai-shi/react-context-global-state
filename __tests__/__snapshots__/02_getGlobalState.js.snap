@@ -7,7 +7,7 @@ exports[`getGlobalState should update state 1`] = `
       <div>
         <Counter>
           <StateConsumer
-            name="counter1"
+            name="count1"
           >
             <div>
               <span>
@@ -37,7 +37,7 @@ exports[`getGlobalState should update state 3`] = `
       <div>
         <Counter>
           <StateConsumer
-            name="counter1"
+            name="count1"
           >
             <div>
               <span>

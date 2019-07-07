@@ -29,11 +29,11 @@ npm install react-context-global-state
 import React from 'react';
 import { createGlobalState } from 'react-context-global-state';
 
-const initialState = { counter: 0 };
+const initialState = { count: 0 };
 const { StateProvider, StateConsumer } = createGlobalState(initialState);
 
 const Counter = () => (
-  <StateConsumer name="counter">
+  <StateConsumer name="count">
     {(value, update) => (
       <div>
         <span>Counter: {value}</span>
