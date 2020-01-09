@@ -8,7 +8,7 @@ const ErrorMessageStateConsumer = StateConsumer as StateConsumerType<State, 'err
 
 const ErrorMessage = () => (
   <ErrorMessageStateConsumer name="errorMessage">
-    {value => (
+    {(value) => (
       <div style={{ color: 'red' }}>
         {value}
       </div>

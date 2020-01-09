@@ -8,7 +8,7 @@ const PageTitleStateConsumer = StateConsumer as StateConsumerType<State, 'pageTi
 
 const PageInfo = () => (
   <PageTitleStateConsumer name="pageTitle">
-    {value => (
+    {(value) => (
       <div>
         <h1>PageInfo</h1>
         {value}

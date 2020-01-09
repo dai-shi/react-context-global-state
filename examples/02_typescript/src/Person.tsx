@@ -16,7 +16,7 @@ const Person = () => (
             value={value.firstName}
             onChange={(event) => {
               const firstName = event.target.value;
-              update(p => ({ ...p, firstName }));
+              update((p) => ({ ...p, firstName }));
             }}
           />
         </div>
@@ -26,7 +26,7 @@ const Person = () => (
             value={value.lastName}
             onChange={(event) => {
               const lastName = event.target.value;
-              update(p => ({ ...p, lastName }));
+              update((p) => ({ ...p, lastName }));
             }}
           />
         </div>
@@ -36,7 +36,7 @@ const Person = () => (
             value={value.age}
             onChange={(event) => {
               const age = Number(event.target.value) || 0;
-              update(p => ({ ...p, age }));
+              update((p) => ({ ...p, age }));
             }}
           />
         </div>

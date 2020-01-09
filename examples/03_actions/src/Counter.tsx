@@ -13,7 +13,7 @@ const Counter1StateConsumer = StateConsumer as StateConsumerType<State, 'count1'
 
 const Counter = () => (
   <Counter1StateConsumer name="count1">
-    {value => (
+    {(value) => (
       <div>
         <span>Count: {value}</span>
         <button type="button" onClick={countUp}>+1</button>

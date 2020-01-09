@@ -1,6 +1,6 @@
 import React, { createElement as h } from 'react';
 
-const isFunction = fn => (typeof fn === 'function');
+const isFunction = (fn) => (typeof fn === 'function');
 
 export const createGlobalState = (initialState) => {
   const stateItemConsumers = {};
@@ -17,7 +17,7 @@ export const createGlobalState = (initialState) => {
       ({ value, update }) => children(value, update));
     stateItemUpdateListeners[name] = [];
     stateItemUpdaters[name] = (func) => {
-      stateItemUpdateListeners[name].forEach(listener => listener(func));
+      stateItemUpdateListeners[name].forEach((listener) => listener(func));
     };
     const InnerProvider = StateProvider;
     StateProvider = class extends React.PureComponent {
@@ -49,6 +49,6 @@ export const createGlobalState = (initialState) => {
     StateProvider,
     StateConsumer,
     setGlobalState: (name, update) => stateItemUpdaters[name](update),
-    getGlobalState: name => stateItemValues[name],
+    getGlobalState: (name) => stateItemValues[name],
   };
 };
